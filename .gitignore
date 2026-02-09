@@ -1,0 +1,9 @@
+# Java compiled output
+bin/
+*.class
+
+# VS Code workspace settings
+.vscode/
+
+# OS junk
+.DS_Store
