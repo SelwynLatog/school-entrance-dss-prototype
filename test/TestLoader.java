@@ -3,6 +3,7 @@ package test;
 
 import storage.ItemLog;
 import service.ItemService;
+import service.StudentService;
 import ui.ViewLogScreen;
 import enums.*;
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class TestLoader {
     public static void loadViewLog() {
         try {
             ItemLog itemLog = new ItemLog();
-            ItemService itemService = new ItemService(itemLog);
+            ItemService itemService = new ItemService(itemLog, null); // TODO: wire up StudentService
             
             //sample test data
             addSampleItems(itemService);
@@ -31,17 +32,79 @@ public class TestLoader {
             e.printStackTrace();
         }
     }
-     public static void loadDSSMenu() {
+    
+    public static void loadDSSMenu() {
         System.out.println("DSS log wip");
         try {
             System.in.read();
         } catch (IOException ignored) {}
     }
     
+    /**
+     * Adds sample students to the system.
+     * Creates a mix of enrolled students and outsiders with different programs.
+     */
+    public static void addSampleStudents(StudentService studentService) {
+        try {
+           
+            studentService.registerNewStudent(
+                "2026-1001",
+                "Ernest Canlas",
+                "Computer Science",
+                3,
+                StudentStatus.ENROLLED
+            );
+            
+            studentService.registerNewStudent(
+                "2026-1002",
+                "Yesh Uwu",
+                "Information Technology",
+                2,
+                StudentStatus.ENROLLED
+            );
+            
+            studentService.registerNewStudent(
+                "2026-1003",
+                "Jubay Francis",
+                "Computer Engineering",
+                4,
+                StudentStatus.ENROLLED
+            );
+            
+            studentService.registerNewStudent(
+                "2026-0505",
+                "Carlos Mendoza",
+                "Information Technology",
+                5,
+                StudentStatus.SUSPENDED
+            );
+            
+            studentService.registerNewStudent(
+                "V-2026-001",
+                "Robert Chen",
+                "N/A",
+                0,
+                StudentStatus.OUTSIDER
+            );
+            
+            studentService.registerNewStudent(
+                "2026-1004",
+                "Anna Garcia",
+                "Computer Science",
+                1,
+                StudentStatus.ENROLLED
+            );
+            
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error adding sample students: " + e.getMessage());
+        }
+    }
+    
     public static void addSampleItems(ItemService itemService) {
         try {
-            // Sample 1: Plastic water bottle (HELD)
+            // Sample 1: Plastic water bottle (Juan's item)
             itemService.registerNewItem(
+                "2026-1001", 
                 "Plastic Water Bottle",
                 "Nestle",
                 PrimaryCategory.SINGLE_USE_PLASTIC,
@@ -53,8 +116,9 @@ public class TestLoader {
                 1
             );
             
-            // Sample 2: Styrofoam food container (HELD)
+            // Sample 2: Styrofoam food container
             itemService.registerNewItem(
+                "2026-1002",
                 "Styrofoam Lunch Box",
                 "Generic",
                 PrimaryCategory.SINGLE_USE_PLASTIC,
@@ -66,8 +130,9 @@ public class TestLoader {
                 1
             );
             
-            // Sample 3: Cigarettes (HELD)
+            // Sample 3: Cigarettes
             itemService.registerNewItem(
+                "2026-1003",
                 "Cigarette Pack",
                 "Marlboro",
                 PrimaryCategory.TOBACCO,
@@ -80,7 +145,8 @@ public class TestLoader {
             );
             
             // Sample 4: Vape device
-            int vapeId = itemService.registerNewItem(
+            itemService.registerNewItem(
+                "2026-0505",
                 "Vape Pen",
                 "Juul",
                 PrimaryCategory.TOBACCO,
@@ -91,10 +157,10 @@ public class TestLoader {
                 Replaceability.MEDIUM,
                 1
             );
-        
             
-            // Sample 5: Pocket knife (HELD)
+            // Sample 5: Pocket knife
             itemService.registerNewItem(
+                "V-2026-001", //Outsider
                 "Pocket Knife",
                 "Swiss Army",
                 PrimaryCategory.WEAPON,
@@ -106,8 +172,9 @@ public class TestLoader {
                 1
             );
             
-            // Sample 6: Beer can (HELD)
+            // Sample 6: Beer cans
             itemService.registerNewItem(
+                "2026-1004",
                 "Beer Can",
                 "San Miguel",
                 PrimaryCategory.ALCOHOL,
@@ -119,8 +186,9 @@ public class TestLoader {
                 6
             );
             
-            // Sample 7: Plastic spork (HELD)
+            // Sample 7: Plastic spork
             itemService.registerNewItem(
+                "2026-1001", 
                 "Plastic Spork",
                 null,
                 PrimaryCategory.SINGLE_USE_PLASTIC,
@@ -132,8 +200,8 @@ public class TestLoader {
                 5
             );
             
-            // Sample 8: Allowed reusable container (HELD)
             itemService.registerNewItem(
+                "2026-1002",
                 "Reusable Tumbler",
                 "Aquaflask",
                 PrimaryCategory.ALLOWED,

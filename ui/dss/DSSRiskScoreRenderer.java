@@ -85,7 +85,8 @@ public class DSSRiskScoreRenderer {
             String.valueOf(item.getQuantity()));
         row++;
         
-        renderAttribute(2, row++, "Student:", "N/A"); //TODO: Add student model
+        String studentInfo = item.getStudentId() != null ? item.getStudentId() : "N/A";
+        renderAttribute(2, row++, "Student:", studentInfo);
         renderAttribute(2, row, "Time:", 
             item.getTimestamp().format(TIME_FORMAT));
     }

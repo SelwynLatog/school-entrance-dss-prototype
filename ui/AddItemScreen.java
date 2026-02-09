@@ -32,9 +32,9 @@ public class AddItemScreen {
     private static final int TOTAL_FIELDS = 9;
     
     // Layout constants
-    private static final int FORM_WIDTH = 120;
+    private static final int FORM_WIDTH = 130;
     private static final int FORM_HEIGHT = 22;
-    private static final int SCREEN_WIDTH = 120;
+    private static final int SCREEN_WIDTH = 130;
     private static final int SCREEN_HEIGHT = 24;
     
     public AddItemScreen(Screen screen, ItemService itemService) {
@@ -439,6 +439,7 @@ public class AddItemScreen {
         try {
             // Call service to register new item
             itemService.registerNewItem(
+                null,
                 itemName.trim(),
                 brand.trim().isEmpty() ? null : brand.trim(),
                 primaryCategory,

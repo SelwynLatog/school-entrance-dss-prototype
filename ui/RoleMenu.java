@@ -12,7 +12,9 @@ import java.util.List;
 import test.TestLoader;
 import ui.dss.DSSAdminScreen;
 import service.ItemService;
+import service.StudentService;
 import storage.ItemLog;
+import storage.StudentLog;
 
 public class RoleMenu {
     private final Screen screen;
@@ -78,11 +80,16 @@ public class RoleMenu {
     }
     
     public static void start() throws Exception {
-        // Create shared ItemLog and ItemService
+        // Create storage layers
         ItemLog itemLog = new ItemLog();
-        ItemService itemService = new ItemService(itemLog);
+        StudentLog studentLog = new StudentLog();
         
-        //sample items
+        // Create service layers with proper dependencies
+        StudentService studentService = new StudentService(studentLog, itemLog);
+        ItemService itemService = new ItemService(itemLog, studentService);
+        
+        // Load sample data
+        TestLoader.addSampleStudents(studentService); 
         TestLoader.addSampleItems(itemService);
         
         RoleMenu menu = new RoleMenu();

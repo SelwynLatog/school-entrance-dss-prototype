@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  */
 public class Item {
     private final String itemName;
-    private final String brand; //optional
+    private final String brand;
     private final PrimaryCategory primaryCategory;
     private final SecondaryCategory secondaryCategory;
     private final ItemFunction function;
@@ -23,6 +23,7 @@ public class Item {
     private final ItemStatus status;
     private final int quantity;
     private final LocalDateTime timestamp;
+    private final String studentId;
     
     public Item(
             String itemName,
@@ -35,7 +36,8 @@ public class Item {
             Replaceability replaceability,
             ItemStatus status,
             int quantity,
-            LocalDateTime timestamp
+            LocalDateTime timestamp,
+            String studentId 
     ) {
         // Item validates its own integrity - fails fast with clear errors
         if (itemName == null || itemName.trim().isEmpty()) {
@@ -80,6 +82,7 @@ public class Item {
         this.status = status;
         this.quantity = quantity;
         this.timestamp = timestamp;
+        this.studentId = studentId;
     }
     
     // Getters
@@ -127,6 +130,10 @@ public class Item {
         return timestamp;
     }
     
+    public String getStudentId() {
+        return studentId;
+    }
+    
     /**
      * Creates a new Item with updated status.
      * Original item remains unchanged (immutable pattern).
@@ -150,7 +157,8 @@ public class Item {
                 this.replaceability,
                 newStatus,
                 this.quantity,
-                this.timestamp
+                this.timestamp,
+                this.studentId
         );
     }
     
@@ -177,7 +185,8 @@ public class Item {
                 this.replaceability,
                 this.status,
                 newQuantity,
-                this.timestamp
+                this.timestamp,
+                this.studentId
         );
     }
     
@@ -194,6 +203,7 @@ public class Item {
                 "Qty: " + quantity + " | " +
                 timestamp.toLocalDate() +
                 (brand != null ? " | " + brand : "") +
+                (studentId != null ? " | Student: " + studentId : "") + 
                 "]";
     }
 }

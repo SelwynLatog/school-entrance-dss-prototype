@@ -73,7 +73,8 @@ public class DSSHardPolicyRenderer {
             TextColor.ANSI.WHITE, DSSVisualHelpers.SCREEN_WIDTH);
         
         // Student and time
-        String studentLine = "STUDENT: N/A";
+        String studentInfo = item.getStudentId() != null ? item.getStudentId() : "N/A";
+        String studentLine = "STUDENT: " + studentInfo;
         String timePadding = " ".repeat(30);
         String timeInfo = "TIME: " + item.getTimestamp().format(TIME_FORMAT);
         UIHelpers.writeText(screen, 2, 4, studentLine + timePadding + timeInfo, 

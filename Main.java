@@ -1,7 +1,7 @@
 //Main.java
 import test.TestLoader;
 import ui.RoleMenu;
-//TODO: Student Model, Analysis Engine
+//TODO: Student Log, Analysis Engine
 
 public class Main {
     public static void main(String[] args) {

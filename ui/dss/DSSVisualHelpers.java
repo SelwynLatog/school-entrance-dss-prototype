@@ -19,7 +19,7 @@ import enums.Decision;
 public class DSSVisualHelpers {
     
     // Layout constants
-    public static final int SCREEN_WIDTH = 130;
+    public static final int SCREEN_WIDTH = 120;
     public static final int SCREEN_HEIGHT = 30;
     public static final int LEFT_PANEL_WIDTH = 60;
     

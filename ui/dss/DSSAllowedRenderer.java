@@ -72,7 +72,8 @@ public class DSSAllowedRenderer {
             TextColor.ANSI.WHITE, DSSVisualHelpers.SCREEN_WIDTH);
         
         // Student and time
-        String studentLine = "STUDENT: N/A";
+        String studentInfo = item.getStudentId() != null ? item.getStudentId() : "N/A";
+        String studentLine = "STUDENT: " + studentInfo;
         String timePadding = " ".repeat(30);
         String timeInfo = "TIME: " + item.getTimestamp().format(TIME_FORMAT);
         UIHelpers.writeText(screen, 2, 4, studentLine + timePadding + timeInfo, 
@@ -94,9 +95,6 @@ public class DSSAllowedRenderer {
             TextColor.ANSI.GREEN_BRIGHT, DSSVisualHelpers.SCREEN_WIDTH);
     }
     
-    /**
-     Renders decision classification details.
-     */
     private void renderDecisionDetails(ItemLog.ItemEntry entry, DecisionResult result) {
         Item item = entry.getItem();
         int centerY = DSSVisualHelpers.SCREEN_HEIGHT / 2;
@@ -124,9 +122,6 @@ public class DSSAllowedRenderer {
             TextColor.ANSI.WHITE, DSSVisualHelpers.SCREEN_WIDTH);
     }
     
-    /**
-     Renders the permitted message.
-     */
     private void renderPermittedMessage() {
         int centerY = DSSVisualHelpers.SCREEN_HEIGHT / 2;
         String permitted = "Item permitted on campus - no action required.";
@@ -135,9 +130,6 @@ public class DSSAllowedRenderer {
             TextColor.ANSI.GREEN, DSSVisualHelpers.SCREEN_WIDTH);
     }
     
-    /**
-     Renders footer with controls.
-     */
     private void renderFooter() {
         DSSVisualHelpers.drawBorderTop(screen, DSSVisualHelpers.SCREEN_HEIGHT - 2);
         UIHelpers.writeText(screen, 2, DSSVisualHelpers.SCREEN_HEIGHT - 1,
