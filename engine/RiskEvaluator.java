@@ -82,9 +82,6 @@ public class RiskEvaluator {
      * 
      * Multiple items of the same type indicate systematic violation
      * or commercial-scale usage, warranting additional scrutiny.
-     * 
-     * @param quantity number of items
-     * @return bonus points (0-20 scale)
      */
     private static int calculateQuantityBonus(int quantity) {
         if (quantity <= 1) return 0;
@@ -99,9 +96,9 @@ public class RiskEvaluator {
      from usage type, replaceability, secondary category, function, consumption
      context, and quantity. All factors are tracked for explainability.
      
-      @param item the item to evaluate (must be SINGLE_USE_PLASTIC category)
-      @return RiskBreakdown containing all factors and total risk score
-      @throws IllegalArgumentException if item is null or not SINGLE_USE_PLASTIC
+     the item to evaluate (must be SINGLE_USE_PLASTIC category)
+     @return RiskBreakdown containing all factors and total risk score
+     if item is null or not SINGLE_USE_PLASTIC
      */
     public static RiskBreakdown evaluate(Item item) {
         if (item == null) {
@@ -208,7 +205,7 @@ public class RiskEvaluator {
                     "Replaceability",
                     "HIGH",
                     REPLACE_HIGH,
-                    "Eco-friendly alternatives are readily available"
+                    "Eco-friendly alternatives available"
                 );
             
             case MEDIUM:

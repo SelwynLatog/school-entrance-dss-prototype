@@ -48,8 +48,8 @@ public class ViewLogScreen {
     
     // Layout constants
     private static final int LEFT_PANEL_WIDTH = 50;
-    private static final int SCREEN_HEIGHT = 24;
-    private static final int SCREEN_WIDTH = 120;
+    private static final int SCREEN_HEIGHT = 26;
+    private static final int SCREEN_WIDTH = 125;
     
     // Date formatter
     private static final DateTimeFormatter DATE_FORMATTER = 

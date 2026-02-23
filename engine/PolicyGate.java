@@ -23,10 +23,6 @@ public class PolicyGate {
      * 
      * This is a pure function - same item always returns same result.
      * 
-     * @param item the item to evaluate
-     * @return Optional containing block reason if policy violated,
-     *         Optional.empty() if item passes all hard policy checks
-     * @throws IllegalArgumentException if item is null
      */
     public static Optional<String> checkHardPolicy(Item item) {
         if (item == null) {

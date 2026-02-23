@@ -137,9 +137,6 @@ public class Item {
     /**
      * Creates a new Item with updated status.
      * Original item remains unchanged (immutable pattern).
-     * 
-     * @param newStatus the new status to apply
-     * @return a new Item instance with the updated status
      */
     public Item withStatus(ItemStatus newStatus) {
         if (newStatus == null) {

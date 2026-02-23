@@ -18,11 +18,6 @@ public class RiskBreakdown {
     
     /**
      * Creates a new RiskBreakdown with validation.
-     * 
-     * @param factors list of all risk factors that contributed to the score
-     * @param totalScore the sum of all factor contributions
-     * @throws IllegalArgumentException if factors is null/empty or if totalScore
-     *         doesn't match the sum of factor contributions
      */
     public RiskBreakdown(List<RiskFactor> factors, int totalScore) {
         if (factors == null || factors.isEmpty()) {
@@ -89,9 +84,6 @@ public class RiskBreakdown {
     /**
      * Returns the top N factors that increased risk.
      * Useful for highlighting primary drivers in explanations.
-     * 
-     * @param n number of top contributors to return
-     * @return list of top N positive contributors (or all if fewer than N exist)
      */
     public List<RiskFactor> getTopContributors(int n) {
         if (n <= 0) {

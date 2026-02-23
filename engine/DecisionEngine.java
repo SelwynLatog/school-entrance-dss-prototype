@@ -36,10 +36,6 @@ public class DecisionEngine {
       3. Performs risk scoring for plastic items
       4. Maps score to decision band
       5. Assembles complete result with admin guidance
-      
-      @param item the item to evaluate
-      @return complete DecisionResult with all evaluation details
-      @throws IllegalArgumentException if item is null
      */
     public static DecisionResult evaluate(Item item) {
         if (item == null) {
@@ -112,7 +108,7 @@ public class DecisionEngine {
      Handles items that are outside the plastic policy scope.
       
      Creates a DecisionResult for items that passed PolicyGate but aren't
-     subject to plastic policy evaluation (e.g., notebooks, non-plastic items).
+     subject to plastic policy evaluation
      */
     private static DecisionResult handleOutOfScopeItem(Item item) {
         return new DecisionResult(
@@ -133,9 +129,6 @@ public class DecisionEngine {
      - Score ≤ 30: ALLOW (low risk)
      - Score 31-70: CONDITIONAL (moderate risk, policy review recommended)
      - Score ≥ 71: DISALLOW (high risk, clear violation)
-      
-     @param score the calculated risk score
-     @return the decision for this score range
      */
     private static Decision mapScoreToDecision(int score) {
         if (score <= ALLOW_THRESHOLD) {
@@ -149,9 +142,6 @@ public class DecisionEngine {
     
     /**
      Generates a reason string for plastic policy decisions. 
-     @param decision the decision that was made
-     @param score the risk score
-     @return human-readable reason for the decision
      */
     private static String generatePlasticPolicyReason(Decision decision, int score) {
         switch (decision) {

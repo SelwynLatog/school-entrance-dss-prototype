@@ -128,7 +128,7 @@ public class DSSQueueView {
         
         String controls = queueEmpty 
             ? "[Q: Quit]"
-            : "[↑↓: Navigate] [ENTER: Evaluate Selected] [L: View Log] [A: Add Item] [Q: Quit]";
+            : "[↑↓: Navigate] [ENTER: Evaluate Selected] [L: View Log] [S: View Students] [A: Add Item] [Q: Quit]";
         
         UIHelpers.writeText(screen, 2, DSSVisualHelpers.SCREEN_HEIGHT - 1, 
             controls, TextColor.ANSI.CYAN, DSSVisualHelpers.SCREEN_WIDTH);

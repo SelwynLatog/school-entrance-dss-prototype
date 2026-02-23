@@ -102,7 +102,7 @@ public class RoleMenu {
                 logScreen.show();
             }
             case "ADMIN" -> {
-                DSSAdminScreen dssScreen = new DSSAdminScreen(itemService);
+                DSSAdminScreen dssScreen = new DSSAdminScreen(itemService, studentService);
                 dssScreen.show();
             }
         }

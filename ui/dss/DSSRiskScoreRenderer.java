@@ -142,7 +142,7 @@ public class DSSRiskScoreRenderer {
     }
     
     private void renderRiskFactors(int x, int startY, RiskBreakdown breakdown) {
-        List<RiskFactor> topFactors = breakdown.getTopContributors(4);
+       List<RiskFactor> topFactors = breakdown.getAllFactors();
         int row = startY;
         
         for (RiskFactor factor : topFactors) {
@@ -157,7 +157,7 @@ public class DSSRiskScoreRenderer {
                 String.format("%s %+d", factorBar, factor.getContribution()),
                 TextColor.ANSI.YELLOW, DSSVisualHelpers.SCREEN_WIDTH);
             
-            // Add description for transparency
+            // All descriptions in RiskEvaluator  added
             UIHelpers.writeText(screen, x, row++,
                 String.format("  → %s", factor.getDescription()),
                 TextColor.ANSI.WHITE, DSSVisualHelpers.SCREEN_WIDTH);

@@ -13,7 +13,9 @@ import com.googlecode.lanterna.input.*;
 import com.googlecode.lanterna.screen.*;
 import com.googlecode.lanterna.terminal.*;
 import service.ItemService;
+import service.StudentService;
 import ui.ViewLogScreen;
+import ui.ViewStudentScreen;
 import ui.AddItemScreen;
 
 import java.io.IOException;
@@ -22,6 +24,7 @@ public class DSSAdminScreen {
     
     private final Screen screen;
     private final ItemService itemService;
+    private final StudentService studentService;
     private final DSSStateManager stateManager;
     
     // View renderers
@@ -33,8 +36,9 @@ public class DSSAdminScreen {
     // Control flag
     private boolean running;
     
-    public DSSAdminScreen(ItemService itemService) throws IOException {
+    public DSSAdminScreen(ItemService itemService, StudentService studentService) throws IOException {
         this.itemService = itemService;
+        this.studentService = studentService;
         
         // Initialize Lanterna
         Terminal terminal = new DefaultTerminalFactory().createTerminal();
@@ -170,19 +174,26 @@ public class DSSAdminScreen {
             case 'l':
                 openLogViewer();
                 break;
+                
+            case 's':
+                openStudentLogViewer();
+                break;
+                
             case 'a':
                 openAddItemScreen();
+                break;
         }
     }
     
     //input in evaluation state
     private void handleEvaluatingInput() throws IOException {
-        //processing time eff
         sleep(1500);
         //run eval
         stateManager.runEvaluation();
         //transition -> result
         stateManager.transitionTo(DSSStateManager.EvaluationState.RESULT);
+        screen.clear();
+        screen.refresh();
     }
     
     private void handleResultInput() throws IOException {
@@ -238,6 +249,15 @@ public class DSSAdminScreen {
         // Refresh queue when returning
         stateManager.refreshQueue();
     }
+    
+    private void openStudentLogViewer() throws IOException {
+        ViewStudentScreen studentScreen = new ViewStudentScreen(studentService);
+        studentScreen.show();
+        
+        // Refresh queue when returning
+        stateManager.refreshQueue();
+    }
+    
     private void openAddItemScreen() throws IOException {
         AddItemScreen addScreen = new AddItemScreen(screen, itemService);
         boolean saved = addScreen.show();

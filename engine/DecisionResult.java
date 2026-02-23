@@ -34,15 +34,6 @@ public class DecisionResult {
     
     /**
      Creates a complete decision result.
-     
-     @param item the item that was evaluated
-     @param decision the final decision (ALLOW/CONDITIONAL/DISALLOW)
-     @param reason brief explanation of the decision
-     @param breakdown detailed risk analysis (can be null for non-scored items)
-     @param threatLevel severity classification
-     @param actionRecommendation admin guidance text
-     @param requiresImmediateAlert true if admin should be notified immediately
-     @throws IllegalArgumentException if any required field is null
      */
     public DecisionResult(
             Item item,

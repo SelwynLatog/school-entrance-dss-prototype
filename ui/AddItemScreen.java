@@ -32,10 +32,10 @@ public class AddItemScreen {
     private static final int TOTAL_FIELDS = 9;
     
     // Layout constants
-    private static final int FORM_WIDTH = 130;
-    private static final int FORM_HEIGHT = 22;
-    private static final int SCREEN_WIDTH = 130;
-    private static final int SCREEN_HEIGHT = 24;
+    private static final int FORM_WIDTH = 125;
+    private static final int FORM_HEIGHT = 25;
+    private static final int SCREEN_WIDTH = 125;
+    private static final int SCREEN_HEIGHT = 25;
     
     public AddItemScreen(Screen screen, ItemService itemService) {
         this.screen = screen;
