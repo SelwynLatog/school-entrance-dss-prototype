@@ -7,3 +7,4 @@ bin/
 
 # OS junk
 .DS_Store
+*.code-workspace
